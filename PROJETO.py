@@ -232,10 +232,7 @@ menu()
 
    
 
-#with open("Eventos.txt", "w") as a:
-    #pass  
-#with open("Cadastro.txt", "w") as a:
-    #pass  
+
 
 
 
