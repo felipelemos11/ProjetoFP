@@ -1,7 +1,7 @@
 def menu():         # Função Menu
     while True:         # Estrutura de repetição
         print("\nMENU DE PETS -> Escolha uma opção:")
-        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n0 - Voltar ao Menu Principal")
+        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6- Menu de Metas\n7 - Sugestões e Cuidados\n0 - Voltar ao Menu Principal")
 
         opcao = input()         # Escolha de funcionalidade
 
@@ -15,6 +15,10 @@ def menu():         # Função Menu
             excluir()
         elif opcao == '5':
             menu_eventos()
+        elif opcao == '6':
+            menu_metas()
+        elif opcao == 7:
+            sugestoes_cuidados()
         elif opcao == '0':
             break           # Terminar codigo
         else:
@@ -226,6 +230,121 @@ def excluir_eventos():
     except Exception as e:
         print("Erro ao remover evento: ", e)
 
+def menu_metas():
+    while True:
+        print("\nMENU METAS -> Escolha uma opção")
+        print("1 - Adicionar meta\n2 - Listar metas\n0 - Voltar ao menu principal")
+        opcao = input()
+
+        if opcao == '1':
+            adicionar_meta()
+        elif opcao == '2':
+            listar_metas()
+        elif opcao == '0':
+            break
+        else:
+            print("Opção inválida!")
+
+def adicionar_meta():
+    try:
+        arquivo = open("Cadastro.txt", "r")
+        pets = arquivo.readlines()
+        arquivo.close()
+
+        if not pets:
+            print("Cadastre um pet antes de adicionar metas.")
+            return
+
+        print("Escolha o pet para vincular a meta:")
+        for i, linha in enumerate(pets):
+            dados = linha.strip().split(" | ")
+            print(f"{i+1} - {dados[0]}")
+
+        indice = int(input("Digite o número do pet: ")) - 1
+        if 0 <= indice < len(pets):
+            nomePet = pets[indice].strip().split(" | ")[0]
+            meta = input("Descreva a meta (ex: Levar ao veterinário a cada 6 meses): ")
+            arquivo_metas = open("Metas.txt", "a")
+            arquivo_metas.write(f"{nomePet}: {meta}\n")
+            arquivo_metas.close()
+            print("Meta adicionada!")
+        else:
+            print("Pet inválido.")
+    except Exception as e:
+        print("Erro ao adicionar meta:", e)
+
+def listar_metas():
+    print("\nLISTA DE METAS")
+    try:
+        arquivo = open("Metas.txt", "r")
+        metas = arquivo.readlines()
+        arquivo.close()
+
+        if not metas:
+            print("Não há metas cadastradas.")
+        for i, meta in enumerate(metas):
+            print(f"{i+1} -> {meta.strip()}")
+    except FileNotFoundError:
+        print("Arquivo de metas não encontrado.")
+    except Exception as e:
+        print("Erro ao listar metas:", e)
+
+def sugestoes_cuidados():
+    print("\nSUGESTÕES DE CUIDADOS")
+    try:
+        arquivo = open("Cadastro.txt", "r")
+        pets = arquivo.readlines()
+        arquivo.close()
+
+        if not pets:
+            print("Não há pets cadastrados.")
+            return
+
+        print("\nSugestões baseadas em espécie e idade aproximada:")
+
+        for i, linha in enumerate(pets):
+            dados = linha.strip().split(" | ")
+            nome = dados[0]
+            especie = dados[1]
+            data_nasc = dados[3]
+
+            try:
+                # Captura da data atual manualmente
+                dia_atual = 15
+                mes_atual = 5
+                ano_atual = 2025
+
+                dia_nasc, mes_nasc, ano_nasc = map(int, data_nasc.split("/"))
+
+                idade = ano_atual - ano_nasc
+                if mes_nasc > mes_atual or (mes_nasc == mes_atual and dia_nasc > dia_atual):
+                    idade -= 1  # Ainda não fez aniversário este ano
+ 
+            except:
+                idade = -1  # Idade desconhecida
+
+            print(f"\nPet: {nome} ({especie})")
+
+            if idade >= 0:
+                print(f"Idade aproximada: {idade} anos")
+            else:
+                print("Idade: não pôde ser calculada")
+
+            # Sugestões com base na espécie e idade
+            especie_lower = especie.lower()
+            if especie_lower == "cachorro":
+                if idade >= 0 and idade < 2:
+                    print("- Recomendado: vacinas em dia, socialização e brinquedos para filhotes.")
+                elif idade >= 2:
+                    print("- Recomendado: passeios regulares, consultas veterinárias anuais e alimentação balanceada.")
+                else:
+                    print("- Cuidados gerais: alimentação saudável e atenção veterinária.")
+            elif especie_lower == "gato":
+                print("- Recomendado: arranhadores, locais altos para subir e higiene da caixa de areia.")
+            else:
+                print("- Espécie não reconhecida: siga recomendações gerais de cuidado e bem-estar.")
+    except Exception as e:
+        print("Erro ao gerar sugestões:", e)
 
 
 menu()            
