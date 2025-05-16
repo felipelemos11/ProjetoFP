@@ -1,7 +1,7 @@
 def menu():         # Função Menu
     while True:         # Estrutura de repetição
         print("\nMENU DE PETS -> Escolha uma opção:")
-        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6- Menu de Metas\n7 - Sugestões e Cuidados\n0 - Voltar ao Menu Principal")
+        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6 - Menu de Metas\n7 - Sugestões e Cuidados\n0 - Voltar ao Menu Principal")
 
         opcao = input()         # Escolha de funcionalidade
 
@@ -17,7 +17,7 @@ def menu():         # Função Menu
             menu_eventos()
         elif opcao == '6':
             menu_metas()
-        elif opcao == 7:
+        elif opcao == '7':
             sugestoes_cuidados()
         elif opcao == '0':
             break           # Terminar codigo
