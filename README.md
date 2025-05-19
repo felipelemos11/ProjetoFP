@@ -56,8 +56,6 @@ Menu de Eventos (menu_eventos())
 Permite registrar eventos importantes para os pets, como vacinas ou consultas.
 
 Subopções:
-Copiar
-Editar
 1 - Adicionar evento
 2 - Listar eventos
 3 - Excluir eventos
