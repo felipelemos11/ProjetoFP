@@ -3,7 +3,7 @@ metas_concluidas = []
 def menu():       
     while True:         
         print("\nMENU DE PETS -> Escolha uma opção:")
-        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6 - Menu de Metas\n7 - Sugestões e Cuidados\n8 - Visao Geral de Pet\n0 - Voltar ao Menu Principal")
+        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6 - Menu de Metas\n7 - Sugestões e Cuidados\n8 - Visão Geral de Pet\n0 - Voltar ao Menu Principal")
 
         opcao = input()         
 
@@ -67,7 +67,7 @@ def editar():
         arquivo.close()            
 
         if not pets:
-            print("\nNao é possivel editar pets pois não há pets cadastrados\n")
+            print("\nNão é possivel editar pets pois não há pets cadastrados\n")
         else:
             indice = int(input("\nDigite o número do pet que você deseja editar: "))          
             indice -= 1         
@@ -99,10 +99,10 @@ def excluir():
         pets = arquivo.readlines()          
         arquivo.close()        
         if not pets:
-            print("\nNao é possivel remover pets pois não há pets cadastrados\n")
+            print("\nNão é possivel remover pets pois não há pets cadastrados\n")
         else:
 
-            indice = int(input("\nDigite o numero do pet que voce deseja remover: "))     
+            indice = int(input("\nDigite o número do pet que você deseja remover: "))     
             indice -= 1        
 
             if 0 <= indice < len(pets):         
@@ -111,7 +111,7 @@ def excluir():
                 arquivo = open("Cadastro.txt", "w")         
                 arquivo.writelines(pets)           
                 arquivo.close()         
-                print("Pet excluido com sucesso")                          
+                print("Pet excluído com sucesso")                          
             else:
                 print("Pet inexistente")
     except Exception as e:
@@ -148,34 +148,34 @@ def add_evento():
             dados = linha.strip().split(' | ')
             print(f"{i + 1} -> Nome: {dados[0]} | Espécie: {dados[1]} | Raça: {dados[2]}") 
     
-        indice = int(input("\nDigite o numero do pet que voce deseja registrar um evento: "))
+        indice = int(input("\nDigite o número do pet que você deseja registrar um evento: "))
         indice -= 1
 
         if 0 <= indice <len(pets):
             nomePet = pets[indice].strip().split(" | ")[0]
             
-            escolha = int(input("\nEscolha o evento que você deseja registrar:\n1 - Vacinas\n2 - Consulta veterinária\n3 - Aplicacao de medicamentos\n"))         
+            escolha = int(input("\nEscolha o evento que você deseja registrar:\n1 - Vacinas\n2 - Consulta veterinária\n3 - Aplicação de medicamentos\n"))         
             
             if escolha == 1:
                 evento = 'Vacina'
             elif escolha == 2:
                 evento = 'Consulta veterinária'
             elif escolha == 3:
-                evento = 'Aplicacao de medicamentos'            
+                evento = 'Aplicação de medicamentos'            
             else: 
-                print("Escolha invalida, tente novamente")
+                print("Escolha inválida, tente novamente")
                 return
                 
 
             
             data = input("Data do Evento (Dia/Mês/Ano): ")
-            obs = int(input("Você deseja adicionar alguma observacao?\n1 - Sim    2 - Nao\n"))         
+            obs = int(input("Você deseja adicionar alguma observação?\n1 - Sim    2 - Nao\n"))         
 
             if obs == 1:
-                observacao = input("Adicione a observacao: ")         
+                observacao = input("Adicione a observação: ")         
             else:
                 observacao = '...'
-                print("Sem observacoes\n")            
+                print("Sem observações\n")            
                 
             arquivo_eventos = open("Eventos.txt", "a")
             arquivo_eventos.write(f"{nomePet}: {evento} | {data} | {observacao}\n")
@@ -185,11 +185,11 @@ def add_evento():
             
 
         else:
-            print("Numero pet invalido")            
+            print("Numero pet inválido")            
     except FileNotFoundError:
-        print("Arquivo de pets nao encontrado. Antes de adicionar um evento, cadastre um pet")          
+        print("Arquivo de pets não encontrado. Antes de adicionar um evento, cadastre um pet")          
     except ValueError:
-        print("Entrada invalida. Digite um numero valido")              
+        print("Entrada inválida. Digite um número válido")              
     except Exception as e:
         print("Erro ao adicionar evento: ", e)
 
@@ -201,14 +201,14 @@ def listar_eventos():
         arquivo.close()     
 
         if not eventos:
-            print("Nao não há eventos cadastrados\n")  
+            print("não há eventos cadastrados\n")  
             return
 
         for i, evento in enumerate(eventos):
             print(f"{i+1} -> {evento.strip()}")
 
     except FileNotFoundError:
-        print("Arquivo de eventos nao encontrado")
+        print("Arquivo de eventos não encontrado")
     except Exception as e:
         print("erro ao listar eventos: ", e)
 
@@ -219,10 +219,10 @@ def excluir_eventos():
         eventos = arquivo.readlines()        
         arquivo.close()         
         if not eventos:
-            print("\nNao é possivel remover eventos pois não há eventos cadastrados\n")
+            print("\nNão é possivel remover eventos pois não há eventos cadastrados\n")
         else:
 
-            indice = int(input("\nDigite o numero do evento que voce deseja remover: "))          
+            indice = int(input("\nDigite o número do evento que voce deseja remover: "))          
             indice -= 1         
 
             if 0 <= indice < len(eventos):         
@@ -231,7 +231,7 @@ def excluir_eventos():
                 arquivo = open("Eventos.txt", "w")        
                 arquivo.writelines(eventos)            
                 arquivo.close()         
-                print("Evento excluido com sucesso")                        
+                print("Evento excluído com sucesso")                        
             else:
                 print("Evento inexistente")
     except Exception as e:
@@ -396,7 +396,7 @@ def visao_geral_do_pet():
             print("Não há pets cadastrados.")
             return
 
-        print("\nEscolha o pet para visualizar a visao geral:")
+        print("\nEscolha o pet para visualizar a visão geral:")
         for i, linha in enumerate(pets):
             dados = linha.strip().split(" | ")
             print(f"{i + 1} -> Nome: {dados[0]} | Espécie: {dados[1]} | Raça: {dados[2]}")
@@ -409,7 +409,7 @@ def visao_geral_do_pet():
 
         nome_pet = pets[indice].strip().split(" | ")[0]
 
-        print(f"\n==== Visao Geral de {nome_pet} ====")
+        print(f"\n==== Visão Geral de {nome_pet} ====")
 
      
         print("\n--- Eventos ---")
@@ -439,14 +439,14 @@ def visao_geral_do_pet():
             print("Arquivo de metas não encontrado.")
 
     except Exception as e:
-        print("Erro ao gerar Visao geral:", e)
+        print("Erro ao gerar Visão geral:", e)
       
       
         print("\n--- Metas Concluídas ---")
     metas_pet_concluidas = [meta for meta in metas_concluidas if meta.lower().startswith(nome_pet.lower() + ":")]
     if metas_pet_concluidas:
         for meta in metas_pet_concluidas:
-            print("✅ concluido: \n" + meta)
+            print("✅ Metas Concluídas: \n" + meta)
     else:
         print("Nenhuma meta concluída para este pet.")
 
