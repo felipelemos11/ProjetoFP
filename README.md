@@ -1,4 +1,6 @@
-#projeto
+#Projeto
+
+CRUD de animais
 
 README
 
