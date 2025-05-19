@@ -1,7 +1,7 @@
 def menu():         # Função Menu
     while True:         # Estrutura de repetição
         print("\nMENU DE PETS -> Escolha uma opção:")
-        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6 - Menu de Metas\n7 - Sugestões e Cuidados\n0 - Voltar ao Menu Principal")
+        print("1 - Adicionar pet\n2 - Listar pets\n3 - Editar pet\n4 - Excluir pet\n5 - Menu eventos\n6 - Menu de Metas\n7 - Sugestões e Cuidados\n8 - Linha do tempo\n0 - Voltar ao Menu Principal")
 
         opcao = input()         # Escolha de funcionalidade
 
@@ -19,6 +19,9 @@ def menu():         # Função Menu
             menu_metas()
         elif opcao == '7':
             sugestoes_cuidados()
+        elif opcao == '8':
+            linha_do_tempo_pet()
+
         elif opcao == '0':
             break           # Terminar codigo
         else:
@@ -346,25 +349,58 @@ def sugestoes_cuidados():
     except Exception as e:
         print("Erro ao gerar sugestões:", e)
 
+        #linha do tempo
+def linha_do_tempo_pet():
+     nome_pet = input("\nDigite o nome do pet para ver a linha do tempo: ").strip()
+     encontrado = False
 
-menu()            
+     try:
+        # Verificar se o pet existe no Cadastro.txt pelo nome
+        with open("Cadastro.txt", "r") as arq_cadastro:
+            pets = arq_cadastro.readlines()
 
-   
+        for linha in pets:
+            if nome_pet.lower() == linha.strip().split(" | ")[0].lower():
+                encontrado = True
+                break
+
+        if not encontrado:
+            print("Pet não encontrado no cadastro.")
+            return
+
+        print(f"\n==== Linha do tempo de {nome_pet} ====")
+
+        #ve os eventos do pet
+        print("\n--- Eventos ---")
+        try:
+            with open("Eventos.txt", "r") as arq_eventos:
+                eventos = arq_eventos.readlines()
+                eventos_filtrados = [ev for ev in eventos if ev.lower().startswith(nome_pet.lower() + ":")]
+                if eventos_filtrados:
+                    for ev in eventos_filtrados:
+                        print("- " + ev.strip())
+                else:
+                    print("Nenhum evento encontrado para este pet.")
+        except FileNotFoundError:
+            print("Arquivo de eventos não encontrado.")
+
+        #ve as metas do pet
+        print("\n--- Metas ---")
+        try:
+            with open("Metas.txt", "r") as arq_metas:
+                metas = arq_metas.readlines()
+                metas_filtradas = [meta for meta in metas if meta.lower().startswith(nome_pet.lower() + ":")]
+                if metas_filtradas:
+                    for meta in metas_filtradas:
+                        print("- " + meta.strip())
+                else:
+                    print("Nenhuma meta encontrada para este pet.")
+        except FileNotFoundError:
+            print("Arquivo de metas não encontrado.")
+
+     except Exception as e:
+            print("Erro ao gerar linha do tempo:", e)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+menu()
