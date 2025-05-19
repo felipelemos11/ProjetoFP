@@ -1,3 +1,5 @@
+metas_concluidas = []
+
 def menu():       
     while True:         
         print("\nMENU DE PETS -> Escolha uma opção:")
@@ -297,30 +299,34 @@ def listar_metas():
         print("Erro ao listar metas:", e)
 
 def concluir_metas():
-    listar_metas()                       
+    global metas_concluidas 
+
+    listar_metas()
     try:
-        arquivo = open("Metas.txt", "r")         
-        metas = arquivo.readlines()         
-        arquivo.close()         
+        with open("Metas.txt", "r") as arquivo:
+            metas = arquivo.readlines()
+
         if not metas:
-            print("\nNao é possivel marcar metas como concluido pois não há metas cadastrados\n")
+            print("\nNão é possível marcar metas como concluídas, pois não há metas cadastradas.\n")
             return
+
+        indice = int(input("\nDigite o número da meta que você deseja marcar como concluída: ")) - 1
+
+        if 0 <= indice < len(metas):
+            meta_concluida = metas[indice].strip()
+            metas_concluidas.append(meta_concluida)
+
+            del metas[indice]
+
+            with open("Metas.txt", "w") as arquivo:
+                arquivo.writelines(metas)
+
+            print("Meta marcada como concluída!")
         else:
-
-            indice = int(input("\nDigite o numero da meta que voce deseja marcar como concluido: "))        
-            indice -= 1         
-
-            if 0 <= indice < len(metas):        
-                del metas[indice]            
-
-                arquivo = open("Metas.txt", "w")         
-                arquivo.writelines(metas)            
-                arquivo.close()         
-                print("Meta concluida com sucesso")                      
-            else:
-                print("Meta inexistente")
+            print("Meta inexistente")
     except Exception as e:
-        print("Erro ao marcar meta como concluida: ", e)
+        print("Erro ao marcar meta como concluída:", e)
+
 
 
 def sugestoes_cuidados():
@@ -434,6 +440,17 @@ def visao_geral_do_pet():
 
     except Exception as e:
         print("Erro ao gerar Visao geral:", e)
+      
+      
+        print("\n--- Metas Concluídas ---")
+    metas_pet_concluidas = [meta for meta in metas_concluidas if meta.lower().startswith(nome_pet.lower() + ":")]
+    if metas_pet_concluidas:
+        for meta in metas_pet_concluidas:
+            print("✅ concluido: \n" + meta)
+    else:
+        print("Nenhuma meta concluída para este pet.")
+
+    
 
 
 
@@ -441,6 +458,10 @@ def visao_geral_do_pet():
 menu()    
 
    
+
+
+
+
 
 
 
