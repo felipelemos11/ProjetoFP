@@ -16,15 +16,15 @@ Funcionalidades Disponíveis
 - Menu Principal (menu())
 
 Apresenta as opções principais:
-	1.	Adicionar pet
-	2.	Listar pets
-	3.	Editar pet
-	4.	Excluir pet (e dados associados)
-	5.	Menu de eventos
-	6.	Menu de metas
-	7.	Sugestões e cuidados
-	8.	Visão geral do pet
-        0.      Voltar ao menu principal
+1- Adicionar pet 
+2- Listar pets
+3- Editar pet
+4- Excluir pet (e dados associados)
+5- Menu de eventos
+6- Menu de metas
+7- Sugestões e cuidados
+8- Visão geral do pet
+0- Voltar ao menu principal
 
 - Pets
 
