@@ -434,7 +434,7 @@ def visao_geral_do_pet():
                     for meta in metas_filtradas:
                         print("- " + meta.strip())
                 else:
-                    print("Nenhuma meta encontrada para este pet.")
+                    print("Nenhuma meta a fazer para este pet.")
         except FileNotFoundError:
             print("Arquivo de metas não encontrado.")
 
