@@ -1,105 +1,91 @@
-#Projeto
-
 CRUD de animais
 
 README
 
-Arquivos utilizados
-Cadastro.txt – Armazena os dados dos pets cadastrados.
+Esse projeto é um sistema em Python para gerenciar informações de pets, como cadastro, edição, eventos, metas e sugestões de cuidados. Os dados são salvos em arquivos .txt.
 
-Eventos.txt – Armazena os eventos vinculados a cada pet.
+- Estrutura de Arquivos Utilizados
+	•	Cadastro.txt: Armazena os dados dos pets cadastrados.
+	•	Eventos.txt: Registra os eventos vinculados aos pets (vacinas, consultas, medicamentos).
+	•	Metas.txt: Contém metas a serem realizadas para os pets.
+	•	Lista interna metas_concluidas: Guarda as metas marcadas como concluídas durante a execução do programa.
 
-Metas.txt – Armazena metas definidas para cada pet.
 
-Funcionalidades do Sistema
+Funcionalidades Disponíveis
 
-Menu Principal de Pets
-Chamado pela função menu(). Exibe as opções abaixo:
-1 - Adicionar pet
-2 - Listar pets
-3 - Editar pet
-4 - Excluir pet
-5 - Menu eventos
-6 - Menu de Metas
-7 - Sugestões e Cuidados
-8 - Linha do tempo
-0 - Voltar ao Menu Principal
+- Menu Principal (menu())
 
-Descrição das Funções
-1. adicionar()
-Cadastra um novo pet no arquivo Cadastro.txt, solicitando:
+Apresenta as opções principais:
+	1.	Adicionar pet
+	2.	Listar pets
+	3.	Editar pet
+	4.	Excluir pet (e dados associados)
+	5.	Menu de eventos
+	6.	Menu de metas
+	7.	Sugestões e cuidados
+	8.	Visão geral do pet
+	9.	Sair
 
-Nome
+- Pets
 
-Espécie
+1. Adicionar pet
 
-Raça
+Coleta nome, espécie, raça, data de nascimento e peso do pet. Grava em Cadastro.txt.
 
-Data de nascimento
+2. Listar pets
 
-Peso
+Exibe todos os pets cadastrados com seus dados básicos.
 
-2. listar()
-Exibe todos os pets cadastrados, lendo e formatando os dados do arquivo Cadastro.txt.
+3. Editar pet
 
-3. editar()
-Permite alterar os dados de um pet já cadastrado. Substitui a linha correspondente no arquivo com os novos dados fornecidos.
+Permite editar os dados de um pet existente, selecionado por número.
 
-4. excluir()
-Remove um pet da lista, com base no número da lista exibida.
+4. Excluir pet
 
-Menu de Eventos (menu_eventos())
-Permite registrar eventos importantes para os pets, como vacinas ou consultas.
+Remove o pet do Cadastro.txt e também apaga os eventos e metas associadas. Remove metas concluídas do mesmo pet.
 
-Subopções:
-1 - Adicionar evento
-2 - Listar eventos
-3 - Excluir eventos
-0 - Voltar ao menu principal
-1. add_evento()
-Associa um evento a um pet específico. Tipos disponíveis:
+- Eventos (menu_eventos())
 
-Vacina
+1. Adicionar evento
 
-Consulta veterinária
+Vincula um evento (vacina, consulta ou medicamento) a um pet. Grava em Eventos.txt.
 
-Aplicação de medicamentos
+2. Listar eventos
 
-Também permite adicionar observações opcionais.
+Mostra todos os eventos registrados.
 
-2. listar_eventos()
-Lista todos os eventos registrados em Eventos.txt.
+3. Excluir evento
 
-3. excluir_eventos()
-Permite remover um evento da lista com base em seu número na lista.
+Permite excluir eventos específicos por número da lista.
 
-Menu de Metas (menu_metas())
-Permite o gerenciamento de metas relacionadas ao cuidado com o pet.
+- Metas (menu_metas())
 
-Subopções:
-1 - Adicionar meta
-2 - Listar metas
-0 - Voltar ao menu principal
-1. adicionar_meta()
-Permite definir uma meta personalizada para um pet (exemplo: "Levar ao veterinário a cada 6 meses").
+1. Adicionar meta
 
-2. listar_metas()
-Lista todas as metas registradas em Metas.txt.
+Associa uma meta (ex: “levar ao veterinário”) a um pet. Grava em Metas.txt.
 
-sugestoes_cuidados()
-Gera dicas personalizadas de cuidados com base na espécie e idade do pet. Calcula a idade aproximada com base na data de nascimento e faz recomendações específicas para cães e gatos.
+2. Listar metas
 
-linha_do_tempo_pet()
-Gera uma linha do tempo completa para um pet, reunindo:
+Exibe todas as metas registradas.
 
-Todos os eventos registrados
+3. Concluir meta
 
-Todas as metas definidas
+Marca uma meta como concluída. A meta é armazenada na lista metas_concluidas, mas não é removida do arquivo.
 
-Ajuda o tutor a visualizar o histórico de cuidados com o animal.
+- Sugestões e Cuidados (sugestoes_cuidados())
 
-Requisitos para a execução 
+Oferece recomendações de cuidados com base na espécie e idade estimada dos pets.
+	•	Para cachorros, sugestões variam com a idade.
+	•	Para gatos, são dadas recomendações gerais.
+	•	Outras espécies recebem orientações genéricas.
 
-- Python (versão 3 ou acima)
-- ⁠Editor de texto ou terminal para execução do script
-- ⁠Arquivos .txt criados automaticamente após a execução
+- Visão Geral do Pet (visao_geral_do_pet())
+
+Mostra um resumo completo de um pet específico, incluindo:
+	•	Eventos registrados
+	•	Metas associadas
+	•	Metas concluídas 
+
+Requisitos
+	•	Python 3.x
+	•	Sistema de arquivos com permissão de leitura/escrita
