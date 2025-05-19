@@ -108,11 +108,9 @@ def excluir():
 
                 del pets[indice]           
 
-                # Atualiza o arquivo Cadastro.txt
                 with open("Cadastro.txt", "w") as arquivo:
                     arquivo.writelines(pets)
 
-                # Remoção dos eventos do pet
                 try:
                     with open("Eventos.txt", "r") as arquivo_eventos:
                         eventos = arquivo_eventos.readlines()
@@ -123,7 +121,6 @@ def excluir():
                 except FileNotFoundError:
                     pass
 
-                # Remoção das metas do pet
                 try:
                     with open("Metas.txt", "r") as arquivo_metas:
                         metas = arquivo_metas.readlines()
@@ -134,7 +131,6 @@ def excluir():
                 except FileNotFoundError:
                     pass
 
-                # Remoção das metas concluídas do pet
                 global metas_concluidas
                 metas_concluidas = [meta for meta in metas_concluidas if not meta.lower().startswith(nome_pet_removido.lower() + ":")]
 
