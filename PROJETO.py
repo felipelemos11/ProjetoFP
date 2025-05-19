@@ -104,7 +104,7 @@ def excluir():
             indice -= 1        
 
             if 0 <= indice < len(pets):         
-                nome_pet_removido = pets[indice].strip().split(" | ")[0]  # <-- Nome do pet a ser removido
+                nome_pet_removido = pets[indice].strip().split(" | ")[0]
 
                 del pets[indice]           
 
