@@ -89,11 +89,11 @@ Marca uma meta como concluída. A meta é armazenada na lista metas_concluidas, 
 
 Oferece recomendações de cuidados com base na espécie e idade estimada dos pets.
 
-- Para cachorros, sugestões variam com a idade.
+Para cachorros, sugestões variam com a idade.
  
- - Para gatos, são dadas recomendações gerais.
+Para gatos, são dadas recomendações gerais.
   
- - Outras espécies recebem orientações genéricas.
+Outras espécies recebem orientações genéricas.
 
 
 
