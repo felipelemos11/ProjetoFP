@@ -23,7 +23,6 @@ def menu():
             sugestoes_cuidados()
         elif opcao == '8':
             visao_geral_do_pet()
-
         elif opcao == '0':
             break           
         else:
@@ -101,17 +100,46 @@ def excluir():
         if not pets:
             print("\nNão é possivel remover pets pois não há pets cadastrados\n")
         else:
-
             indice = int(input("\nDigite o número do pet que você deseja remover: "))     
             indice -= 1        
 
             if 0 <= indice < len(pets):         
+                nome_pet_removido = pets[indice].strip().split(" | ")[0]  # <-- Nome do pet a ser removido
+
                 del pets[indice]           
 
-                arquivo = open("Cadastro.txt", "w")         
-                arquivo.writelines(pets)           
-                arquivo.close()         
-                print("Pet excluído com sucesso")                          
+                # Atualiza o arquivo Cadastro.txt
+                with open("Cadastro.txt", "w") as arquivo:
+                    arquivo.writelines(pets)
+
+                # Remoção dos eventos do pet
+                try:
+                    with open("Eventos.txt", "r") as arquivo_eventos:
+                        eventos = arquivo_eventos.readlines()
+                    with open("Eventos.txt", "w") as arquivo_eventos:
+                        for evento in eventos:
+                            if not evento.lower().startswith(nome_pet_removido.lower() + ":"):
+                                arquivo_eventos.write(evento)
+                except FileNotFoundError:
+                    pass
+
+                # Remoção das metas do pet
+                try:
+                    with open("Metas.txt", "r") as arquivo_metas:
+                        metas = arquivo_metas.readlines()
+                    with open("Metas.txt", "w") as arquivo_metas:
+                        for meta in metas:
+                            if not meta.lower().startswith(nome_pet_removido.lower() + ":"):
+                                arquivo_metas.write(meta)
+                except FileNotFoundError:
+                    pass
+
+                # Remoção das metas concluídas do pet
+                global metas_concluidas
+                metas_concluidas = [meta for meta in metas_concluidas if not meta.lower().startswith(nome_pet_removido.lower() + ":")]
+
+                print("Pet e dados associados excluídos com sucesso")                          
+
             else:
                 print("Pet inexistente")
     except Exception as e:
@@ -165,11 +193,9 @@ def add_evento():
             else: 
                 print("Escolha inválida, tente novamente")
                 return
-                
 
-            
             data = input("Data do Evento (Dia/Mês/Ano): ")
-            obs = int(input("Você deseja adicionar alguma observação?\n1 - Sim    2 - Nao\n"))         
+            obs = int(input("Você deseja adicionar alguma observação?\n1 - Sim    2 - Não\n"))         
 
             if obs == 1:
                 observacao = input("Adicione a observação: ")         
@@ -182,10 +208,8 @@ def add_evento():
             arquivo_eventos.close()
 
             print("Evento adicionado!!")
-            
-
         else:
-            print("Numero pet inválido")            
+            print("Número do pet inválido")            
     except FileNotFoundError:
         print("Arquivo de pets não encontrado. Antes de adicionar um evento, cadastre um pet")          
     except ValueError:
@@ -201,16 +225,15 @@ def listar_eventos():
         arquivo.close()     
 
         if not eventos:
-            print("não há eventos cadastrados\n")  
+            print("Não há eventos cadastrados\n")  
             return
 
         for i, evento in enumerate(eventos):
             print(f"{i+1} -> {evento.strip()}")
-
     except FileNotFoundError:
         print("Arquivo de eventos não encontrado")
     except Exception as e:
-        print("erro ao listar eventos: ", e)
+        print("Erro ao listar eventos: ", e)
 
 def excluir_eventos():
     listar_eventos()                   
@@ -219,15 +242,13 @@ def excluir_eventos():
         eventos = arquivo.readlines()        
         arquivo.close()         
         if not eventos:
-            print("\nNão é possivel remover eventos pois não há eventos cadastrados\n")
+            print("\nNão é possível remover eventos pois não há eventos cadastrados\n")
         else:
-
-            indice = int(input("\nDigite o número do evento que voce deseja remover: "))          
+            indice = int(input("\nDigite o número do evento que você deseja remover: "))          
             indice -= 1         
 
             if 0 <= indice < len(eventos):         
                 del eventos[indice]           
-
                 arquivo = open("Eventos.txt", "w")        
                 arquivo.writelines(eventos)            
                 arquivo.close()         
@@ -327,8 +348,6 @@ def concluir_metas():
     except Exception as e:
         print("Erro ao marcar meta como concluída:", e)
 
-
-
 def sugestoes_cuidados():
     print("\nSUGESTÕES DE CUIDADOS")
     try:
@@ -349,7 +368,6 @@ def sugestoes_cuidados():
             data_nasc = dados[3]
 
             try:
-              
                 dia_atual = 15
                 mes_atual = 5
                 ano_atual = 2025
@@ -359,7 +377,6 @@ def sugestoes_cuidados():
                 idade = ano_atual - ano_nasc
                 if mes_nasc > mes_atual or (mes_nasc == mes_atual and dia_nasc > dia_atual):
                     idade -= 1 
- 
             except:
                 idade = -1  
 
@@ -370,7 +387,6 @@ def sugestoes_cuidados():
             else:
                 print("Idade: não pôde ser calculada")
 
-            
             especie_lower = especie.lower()
             if especie_lower == "cachorro":
                 if idade >= 0 and idade < 2:
@@ -386,7 +402,6 @@ def sugestoes_cuidados():
     except Exception as e:
         print("Erro ao gerar sugestões:", e)
 
-      
 def visao_geral_do_pet():
     try:
         with open("Cadastro.txt", "r") as arq_cadastro:
@@ -411,7 +426,6 @@ def visao_geral_do_pet():
 
         print(f"\n==== Visão Geral de {nome_pet} ====")
 
-     
         print("\n--- Eventos ---")
         try:
             with open("Eventos.txt", "r") as arq_eventos:
@@ -438,44 +452,14 @@ def visao_geral_do_pet():
         except FileNotFoundError:
             print("Arquivo de metas não encontrado.")
 
+        print("\n--- Metas Concluídas ---")
+        metas_pet_concluidas = [meta for meta in metas_concluidas if meta.lower().startswith(nome_pet.lower() + ":")]
+        if metas_pet_concluidas:
+            for meta in metas_pet_concluidas:
+                print("✅ Metas concluídas: \n" + meta)
+        else:
+            print("Nenhuma meta concluída para este pet.")
     except Exception as e:
         print("Erro ao gerar Visão geral:", e)
-      
-      
-        print("\n--- Metas Concluídas ---")
-    metas_pet_concluidas = [meta for meta in metas_concluidas if meta.lower().startswith(nome_pet.lower() + ":")]
-    if metas_pet_concluidas:
-        for meta in metas_pet_concluidas:
-            print("✅ Metas Concluídas: \n" + meta)
-    else:
-        print("Nenhuma meta concluída para este pet.")
 
-    
-
-
-
-
-menu()    
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+menu()
