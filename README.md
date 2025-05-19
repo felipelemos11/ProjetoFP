@@ -15,10 +15,6 @@ Funcionalidades do Sistema
 
 Menu Principal de Pets
 Chamado pela função menu(). Exibe as opções abaixo:
-
-css
-Copiar
-Editar
 1 - Adicionar pet
 2 - Listar pets
 3 - Editar pet
@@ -81,9 +77,6 @@ Menu de Metas (menu_metas())
 Permite o gerenciamento de metas relacionadas ao cuidado com o pet.
 
 Subopções:
-css
-Copiar
-Editar
 1 - Adicionar meta
 2 - Listar metas
 0 - Voltar ao menu principal
