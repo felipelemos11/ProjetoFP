@@ -16,6 +16,7 @@ Funcionalidades Disponíveis
 - Menu Principal (menu())
 
 Apresenta as opções principais:
+
 1- Adicionar pet 
 
 2- Listar pets
