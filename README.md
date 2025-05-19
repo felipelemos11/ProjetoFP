@@ -24,7 +24,7 @@ Apresenta as opções principais:
 	6.	Menu de metas
 	7.	Sugestões e cuidados
 	8.	Visão geral do pet
-	9.	Sair
+        0.      Voltar ao menu principal
 
 - Pets
 
