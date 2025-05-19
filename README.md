@@ -5,9 +5,13 @@ README
 Esse projeto é um sistema em Python para gerenciar informações de pets, como cadastro, edição, eventos, metas e sugestões de cuidados. Os dados são salvos em arquivos .txt.
 
 - Estrutura de Arquivos Utilizados
+
 	•	Cadastro.txt: Armazena os dados dos pets cadastrados.
+
 	•	Eventos.txt: Registra os eventos vinculados aos pets (vacinas, consultas, medicamentos).
+
 	•	Metas.txt: Contém metas a serem realizadas para os pets.
+
 	•	Lista interna metas_concluidas: Guarda as metas marcadas como concluídas durante a execução do programa.
 
 
