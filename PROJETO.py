@@ -332,12 +332,6 @@ def concluir_metas():
         if 0 <= indice < len(metas):
             meta_concluida = metas[indice].strip()
             metas_concluidas.append(meta_concluida)
-
-            del metas[indice]
-
-            with open("Metas.txt", "w") as arquivo:
-                arquivo.writelines(metas)
-
             print("Meta marcada como concluída!")
         else:
             print("Meta inexistente")
@@ -448,7 +442,6 @@ def visao_geral_do_pet():
         except FileNotFoundError:
             print("Arquivo de metas não encontrado.")
 
-        print("\n--- Metas Concluídas ---")
         metas_pet_concluidas = [meta for meta in metas_concluidas if meta.lower().startswith(nome_pet.lower() + ":")]
         if metas_pet_concluidas:
             for meta in metas_pet_concluidas:
