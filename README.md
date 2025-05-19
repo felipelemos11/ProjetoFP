@@ -88,17 +88,22 @@ Marca uma meta como concluída. A meta é armazenada na lista metas_concluidas, 
 - Sugestões e Cuidados (sugestoes_cuidados())
 
 Oferece recomendações de cuidados com base na espécie e idade estimada dos pets.
-	•	Para cachorros, sugestões variam com a idade.
-	•	Para gatos, são dadas recomendações gerais.
-	•	Outras espécies recebem orientações genéricas.
+
+- Para cachorros, sugestões variam com a idade.
+ 
+ - Para gatos, são dadas recomendações gerais.
+  
+ - Outras espécies recebem orientações genéricas.
 
 - Visão Geral do Pet (visao_geral_do_pet())
 
 Mostra um resumo completo de um pet específico, incluindo:
-	•	Eventos registrados
-	•	Metas associadas
-	•	Metas concluídas 
+
+- Eventos registrados
+- Metas associadas
+- Metas concluídas 
 
 Requisitos
-	•	Python 3.x
-	•	Sistema de arquivos com permissão de leitura/escrita
+
+- Python 3.x
+- Sistema de arquivos com permissão de leitura/escrita
