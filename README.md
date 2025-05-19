@@ -96,6 +96,7 @@ Oferece recomendações de cuidados com base na espécie e idade estimada dos pe
  - Outras espécies recebem orientações genéricas.
 
 
+
 Visão Geral do Pet (visao_geral_do_pet())
 
 Mostra um resumo completo de um pet específico, incluindo:
