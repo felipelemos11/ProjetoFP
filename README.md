@@ -1,6 +1,6 @@
 CRUD de animais
 
-*integrates: Natan Luis, Diego Gomes, Arthur Monteiro, Felipe de Almeida Lemos e Ranilton Araujo da Silva Raposo Júnior Metas Txt TSEDSECcsecsecsecsec , G10*
+*integrates: Natan Luis, Diego Gomes, Arthur Monteiro, Felipe de Almeida e Ranilton Araujo, G10*
 
 *link do github: https://github.com/Natas081/ProjetoFP*
 
