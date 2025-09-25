@@ -2,7 +2,7 @@
 
 *Integrantes: Natan Luis, Diego Gomes, Arthur Monteiro, Felipe de Almeida e Ranilton Araujo, G10*
 
-* Github: https://github.com/Natas081/ProjetoFP *
+* Github: https://github.com/Natas081/ProjetoFP 
 
 ## README
 
