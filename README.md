@@ -20,7 +20,7 @@ Esse projeto é um sistema em Python para gerenciar informações de pets, como 
 
 ## Funcionalidades Disponíveis
 
-### Menu Principal (`menu()`)
+### - Menu Principal (`menu()`)
 Apresenta as opções principais:
 
 1- Adicionar pet
@@ -41,7 +41,7 @@ Apresenta as opções principais:
 
 0- Voltar ao menu principal
 
-### Pets
+### - Pets
 
 #### Adicionar pet
 Coleta nome, espécie, raça, data de nascimento e peso do pet. Grava em `Cadastro.txt`.
@@ -55,7 +55,7 @@ Permite editar os dados de um pet existente, selecionado por número.
 #### Excluir pet
 Remove o pet do `Cadastro.txt` e também apaga os eventos e metas associadas. Remove metas concluídas do mesmo pet.
 
-### Eventos (`menu_eventos()`)
+### - Eventos (`menu_eventos()`)
 
 #### Adicionar evento
 Vincula um evento (vacina, consulta ou medicamento) a um pet. Grava em `Eventos.txt`.
@@ -66,7 +66,7 @@ Mostra todos os eventos registrados.
 #### Excluir evento
 Permite excluir eventos específicos por número da lista.
 
-### Metas (`menu_metas()`)
+### - Metas (`menu_metas()`)
 
 #### Adicionar meta
 Associa uma meta (ex: "levar ao veterinário") a um pet. Grava em `Metas.txt`.
@@ -77,21 +77,21 @@ Exibe todas as metas registradas.
 #### Concluir meta
 Marca uma meta como concluída. A meta é armazenada na lista `metas_concluidas`, mas não é removida do arquivo.
 
-### Sugestões e Cuidados (`sugestoes_cuidados()`)
+### - Sugestões e Cuidados (`sugestoes_cuidados()`)
 Oferece recomendações de cuidados com base na espécie e idade estimada dos pets.
 
 - Para cachorros, sugestões variam com a idade.
 - Para gatos, são dadas recomendações gerais.
 - Outras espécies recebem orientações genéricas.
 
-### Visão Geral do Pet (`visao_geral_do_pet()`)
+### - Visão Geral do Pet (`visao_geral_do_pet()`)
 Mostra um resumo completo de um pet específico, incluindo:
 
 - Eventos registrados
 - Metas associadas
 - Metas concluídas
 
-## Requisitos
+## - Requisitos
 
 - Python 3.x
 - Sistema de arquivos com permissão de leitura/escrita
