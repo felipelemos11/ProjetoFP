@@ -1,26 +1,26 @@
-CRUD de animais
+# CRUD de animais
 
 *Integrantes: Natan Luis, Diego Gomes, Arthur Monteiro, Felipe de Almeida e Ranilton Araujo, G10*
 
 *link do github: https://github.com/Natas081/ProjetoFP*
 
-README
+## README
 
 Esse projeto é um sistema em Python para gerenciar informações de pets, como cadastro, edição, eventos, metas e sugestões de cuidados. Os dados são salvos em arquivos .txt.
 
-Estrutura de Arquivos Utilizados
+## Estrutura de Arquivos Utilizados
 
-• Cadastro.txt: Armazena os dados dos pets cadastrados.
+• `Cadastro.txt`: Armazena os dados dos pets cadastrados.
 
-• Eventos.txt: Registra os eventos vinculados aos pets (vacinas, consultas, medicamentos).
+• `Eventos.txt`: Registra os eventos vinculados aos pets (vacinas, consultas, medicamentos).
 
-• Metas.txt: Contém metas a serem realizadas para os pets.
+• `Metas.txt`: Contém metas a serem realizadas para os pets.
 
-• Lista interna metas_concluidas: Guarda as metas marcadas como concluídas durante a execução do programa.
+• `Lista interna metas_concluidas`: Guarda as metas marcadas como concluídas durante a execução do programa.
 
-Funcionalidades Disponíveis
+## Funcionalidades Disponíveis
 
-Menu Principal (menu())
+### Menu Principal (`menu()`)
 Apresenta as opções principais:
 
 1- Adicionar pet
@@ -41,56 +41,57 @@ Apresenta as opções principais:
 
 0- Voltar ao menu principal
 
-Pets
-Adicionar pet
-Coleta nome, espécie, raça, data de nascimento e peso do pet. Grava em Cadastro.txt.
+### Pets
 
-Listar pets
+#### Adicionar pet
+Coleta nome, espécie, raça, data de nascimento e peso do pet. Grava em `Cadastro.txt`.
+
+#### Listar pets
 Exibe todos os pets cadastrados com seus dados básicos.
 
-Editar pet
+#### Editar pet
 Permite editar os dados de um pet existente, selecionado por número.
 
-Excluir pet
-Remove o pet do Cadastro.txt e também apaga os eventos e metas associadas. Remove metas concluídas do mesmo pet.
+#### Excluir pet
+Remove o pet do `Cadastro.txt` e também apaga os eventos e metas associadas. Remove metas concluídas do mesmo pet.
 
-Eventos (menu_eventos())
-Adicionar evento
-Vincula um evento (vacina, consulta ou medicamento) a um pet. Grava em Eventos.txt.
+### Eventos (`menu_eventos()`)
 
-Listar eventos
+#### Adicionar evento
+Vincula um evento (vacina, consulta ou medicamento) a um pet. Grava em `Eventos.txt`.
+
+#### Listar eventos
 Mostra todos os eventos registrados.
 
-Excluir evento
+#### Excluir evento
 Permite excluir eventos específicos por número da lista.
 
-Metas (menu_metas())
-Adicionar meta
-Associa uma meta (ex: “levar ao veterinário”) a um pet. Grava em Metas.txt.
+### Metas (`menu_metas()`)
 
-Listar metas
+#### Adicionar meta
+Associa uma meta (ex: "levar ao veterinário") a um pet. Grava em `Metas.txt`.
+
+#### Listar metas
 Exibe todas as metas registradas.
 
-Concluir meta
-Marca uma meta como concluída. A meta é armazenada na lista metas_concluidas, mas não é removida do arquivo.
+#### Concluir meta
+Marca uma meta como concluída. A meta é armazenada na lista `metas_concluidas`, mas não é removida do arquivo.
 
-Sugestões e Cuidados (sugestoes_cuidados())
+### Sugestões e Cuidados (`sugestoes_cuidados()`)
 Oferece recomendações de cuidados com base na espécie e idade estimada dos pets.
 
-Para cachorros, sugestões variam com a idade.
+- Para cachorros, sugestões variam com a idade.
+- Para gatos, são dadas recomendações gerais.
+- Outras espécies recebem orientações genéricas.
 
-Para gatos, são dadas recomendações gerais.
-
-Outras espécies recebem orientações genéricas.
-
-Visão Geral do Pet (visao_geral_do_pet())
+### Visão Geral do Pet (`visao_geral_do_pet()`)
 Mostra um resumo completo de um pet específico, incluindo:
 
-Eventos registrados
-Metas associadas
-Metas concluídas
+- Eventos registrados
+- Metas associadas
+- Metas concluídas
 
-Requisitos
+## Requisitos
 
-Python 3.x
-Sistema de arquivos com permissão de leitura/escrita
+- Python 3.x
+- Sistema de arquivos com permissão de leitura/escrita
